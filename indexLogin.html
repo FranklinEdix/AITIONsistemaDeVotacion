@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>e-UNDAC - Sistema Academico UNDAC 2.0</title>
+    <link href="external_library/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="external_library/jquery-ui/jquery.ui.datepicker.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/app-min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/hack.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/icon.js"></script>
+    <script type="text/javascript" src="external_library/jquery-transit/jquery.transit.min.js"></script>
+    <script type="text/javascript" src="external_library/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="external_library/bootstrap/js/jquery.functions.js"></script>
+    <script type="text/javascript" src="external_library/base64/jquery.base64.min.js"></script>
+    <script type="text/javascript" src="external_library/jquery-ui/jquery.ui.datepicker.js"></script>
+    <script type="text/javascript" src="external_library/jquery-ui/jquery.ui.core.js"></script>
+    <title>e-UNDAC - Sistema Academico UNDAC 2.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="login">
+    <!--[if IE]>
+	<div class="mensaje">
+                Estas utilizando una version obsoleta del navegador Internet Explorer el sitema no se vera
+                correctamente. Actualiza o descarga un nuevo navegador como este <a href="https://www.google.com/chrome?hl=es">Google Chrome</a>.
+    </div>
+<![endif]-->
+    <section class="login-side" style="background-image: url('img/bg-1.jpg');">
+        <section class="login-side__body">
+            <div class="login-side__body__logo">
+                <figure>
+                    <img class="logoUserMuneco" src="img/undac.png" alt="LogoLogin">
+                </figure>
+            </div>
+            <section class="login-side__body__welcome">
+                <p>BIENVENIDO</p>
+                <p>Inicie sesión</p>
+            </section>
+            <form class="login-side__body__form-side" name="frmLogin" action="ValidarRegistro.php" method="POST" enctype="application/x-www-form-urlecncoded">
+                <div class="select-icon">
+                    <select name="rid" id="rid" class="form-control" rel="tooltip" placeholder="Seleccione su Rol">
+                        <option value="Nulo" selected="selected">Seleccione un Rol</option>
+                        <option value="QU0=;--;AM">Admisión</option>
+                        <option value="QUw=;--;">Alumno</option>
+                        <option value="QlU=;--;BU">Bienestar Universitario</option>
+                        <option value="Q1U=;--;CU">Curriculo</option>
+                        <option value="REY=;--;DF">Decano Facultad</option>
+                        <option value="REM=;--;DC">Docente</option>
+                        <option value="RUc=;--;">Egresado</option>
+                        <option value="RVM=;--;ES">Estadistica</option>
+                        <option value="UEQ=;--;PD">Pedagogia</option>
+                        <option value="UkU=;--;RE">Rector</option>
+                        <option value="UkY=;--;RF">Registro Facultad</option>
+                        <option value="UkM=;--;RC">Registros Central</option>
+                        <option value="U1A=;--;SP">Soporte</option>
+                        <option value="VkE=;--;VA">ViceAcademico</option>
+                    </select> <span><i class="fa fa-dice-d6"></i></span>
+                    <!-- <span class="icon-role"></span> -->
+                </div>
+                <div class="input-icon">
+
+                    <input type="text" name="usuario" id="usuario" value="" title="Código de Matricula o DNI " class="form-control  user-code" maxlength="10" rel="tooltip" placeholder="Código de Matricula o DNI"> <span><i class="fa fa-user-tie"></i></span>
+                    <!-- <span class="icon-user"></span> -->
+                </div>
+
+                <div class="input-icon">
+
+                    <input type="password" name="clave" id="clave" value="" title="Ingrese su contraseña" class="form-control" rel="tooltip" placeholder="Contraseña"> <span><i class="fa fa-key"></i></span>
+                    <!-- <span class="icon-key"></span> -->
+                </div>
+                <dt id="enviar-label">&#160;</dt>
+                <dd id="enviar-element">
+                    <input type="submit" name="enviar" id="enviarf" value="Ingresar" class="button button--alter-blue" style="margin:auto;">
+                    <!--                    
+                    <input type="submit" name="enviar" id="enviarf" value="Ingresar" class="button button--alter-blue"></dd>
+                    -->
+                </dd>
+                <p class="form-side__error"></p>
+            </form>
+            <section class="login-side__recovery-password">
+
+            </section>
+        </section>
+    </section>
+</body>
+
+</html>

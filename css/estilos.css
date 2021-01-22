@@ -1,0 +1,16 @@
+body {
+    background-image: url('../img/UNDACimg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.iconoSalir {
+    font-size: 25px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.iconoSalir:hover {
+    padding: 12px;
+}
