@@ -3,65 +3,53 @@
     $usuario = $_POST['usuario'];
     $contraseña = $_POST['clave'];
     $rol = $_POST['rid'];
-
     if($rol == 'QUw=;--;'){
-        $query = "SELECT*FROM estudiante WHERE IdEstudiante = '$usuario' AND Contraseña = '$contraseña'";
-        $result = mysqli_query($conexion, $query);
-        $row = mysqli_fetch_array($result);
-        if($row){
+        verificate_exits("estudiante",$usuario,$contraseña,"alumno.php",$rol,$conexion,"IdEstudiante","pass");       
+    }elseif($rol == 'REM=;--;DC'){
+        verificate_exits("docente",$usuario,$contraseña,"alumno.php",$rol,$conexion,"IdDocente","pass");
+    }elseif($rol == 'RUc=;--;'){
+        verificate_exits("graduado",$usuario,$contraseña,"alumno.php",$rol,$conexion,"IdGraduado","pass");
+    }elseif($rol == 'Nulo'){
+        header("Location: indexLogin.html");
+    }else{
+        header("Location: alumno_1.php");
+    }
+
+    
+
+    ?> 
+    <?php
+    
+    function verificate_exits($tabla,$usuario,$contraseña,$header,$rol,$conexion,$nameid,$namepass)
+    {
+        $query = "SELECT*FROM $tabla WHERE $nameid = '$usuario' AND $namepass = '$contraseña'";
+            $result = mysqli_query($conexion, $query);
+            if($result){
+                $row = mysqli_fetch_array($result);
+            }
+            else
+            {
+                $row=null;
+            }
+                   
+        if(!is_null($row)){
             ob_start();
             $_SESSION['usuario'] = $usuario;
             $_SESSION['rol'] = $rol;
-            header("Location: alumno.php");
-        }else{?>
+            $_SESSION['Facultad'] = $row[1];
+            $_SESSION['Sede'] = $row[2];
+            header("Location:".$header);
+        }
+        else
+        {
+            ?>
         <?php
             ?>
             <script>
                 alert("Datos Incorrectos");
             </script>
         <?php
-        include('indexLogin.html');
+        include("indexLogin.html");
         }
-        
-    }elseif($rol == 'REM=;--;DC'){
-        $query = "SELECT*FROM docente WHERE IdDocente = '$usuario' AND Contraseña = '$contraseña'";
-        $result = mysqli_query($conexion, $query);
-        $row = mysqli_fetch_array($result);
-        if($row){
-            ob_start();
-            $_SESSION['usuario'] = $usuario;
-            $_SESSION['rol'] = $rol;
-            header("Location: alumno.php");
-        }else{?>
-            <?php
-                ?>
-                <script>
-                    alert("Datos Incorrectos");
-                </script>
-            <?php
-            include('indexLogin.html');
-            }
-    }elseif($rol == 'RUc=;--;'){
-        $query = "SELECT*FROM graduado WHERE IdGraduado = '$usuario' AND Contraseña = '$contraseña'";
-        $result = mysqli_query($conexion, $query);
-        $row = mysqli_fetch_array($result);
-        if($row){
-            ob_start();
-            $_SESSION['usuario'] = $usuario;
-            $_SESSION['rol'] = $rol;
-            header("Location: alumno.php");
-        }else{?>
-            <?php
-                ?>
-                <script>
-                    alert("Datos Incorrectos");
-                </script>
-            <?php
-            include('indexLogin.html');
-            }
-    }elseif($rol == 'Nulo'){
-        header("Location: indexLogin.html");
-    }else{
-        header("Location: alumno_1.php");
-    }  
-?>
+    }
+?> 

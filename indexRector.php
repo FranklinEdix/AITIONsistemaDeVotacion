@@ -29,7 +29,7 @@
                 <div class="col-md-5">
                     <!-- Logo -->
                     <div class="logo">
-                        <h1><a href="home.html">AITÍON</a></h1>
+                        <h1><a href="home.php">AITÍON</a></h1>
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -54,12 +54,26 @@
     </div>
 
     <div class="page-content" >
+        <center>
+            <h1 style="color: white; background: rgb(0,0,0,.6); border-radius:15px; padding:10px; margin-top:10px;"><img src="img/undac.png" alt="" width="80" height="80"> Rector y Vicerrectores <img src="img/undac.png" alt="" width="80" height="80"></h1>
+        </center>
         <div class="row">
             <div class="col-md-2">
                 <div class="sidebar content-box" style="display:block;">
                     <ul class="nav">
                         <!-- Main menu -->
-                        <li class="current"><a href="indexRector.php"><i class="glyphicon glyphicon-info-sign"></i>Información Candidatos</a></li>
+                        <li class="current"><a <?php 
+                                date_default_timezone_set('America/Lima');
+                                $fecha = date('Y-m-d');
+                                $queryFecha = "SELECT MAX(PeriodoFin) FROM listarector"; 
+                                $resultadoFecha = mysqli_query($conexion ,$queryFecha); 
+                                $rowFecha = mysqli_fetch_row($resultadoFecha); 
+                                if($rowFecha[0] >= $fecha){ ?>
+                                
+                                    href="indexRector.php";<?php
+                                }else{
+                                    ?> href="indexRectorMensaje.php" 
+                                <?php } ?>><i class="glyphicon glyphicon-info-sign"></i>Información Candidatos</a></li>
                         <li><a <?php 
                             ob_start();
                             $usuario = $_SESSION['usuario'];
@@ -91,22 +105,35 @@
                                 </div>
                             </div>
                             </div>
-                        <li><a href="resultados.php"><i class="glyphicon glyphicon-signal"></i> Resultados</a></li>
-                        <!--<li><a href="tables.html"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
-                        <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
-                        <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
-                        <li><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
-                        <li class="submenu">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-list"></i> Pages
-                                <span class="caret pull-right"></span>
-                            </a>
-                            <!-- Sub menu 
-                            <ul>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="signup.html">Signup</a></li>
-                            </ul>
-                        </li>-->
+                        <li><a <?php 
+                                date_default_timezone_set('America/Lima');
+                                $fecha = date('Y-m-d');
+                                $queryFecha = "SELECT MAX(PeriodoFin) FROM listarector"; 
+                                $resultadoFecha = mysqli_query($conexion ,$queryFecha); 
+                                $rowFecha = mysqli_fetch_row($resultadoFecha); 
+                                if($rowFecha[0] < $fecha){ ?>
+                                    href="resultados.php"<?php
+                                }else{
+                                    ?> type="button" data-bs-toggle="modal" data-bs-target="#ModaResultado" 
+                                <?php } ?>><i class="glyphicon glyphicon-signal"></i> Resultados</a></li>
+                                <!-- Modal -->
+                                <div class="modal fade" id="ModaResultado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h3>Aún no termina el periodo de elecciones</h3>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <!-------------->  
                     </ul>
                 </div>
             </div>
@@ -197,6 +224,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js" ></script>
                     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
                     <script src="https://code.jquery.com/jquery.js"></script>
                     <!-- Include all compiled plugins (below), or include individual files as needed -->

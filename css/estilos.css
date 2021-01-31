@@ -1,10 +1,23 @@
 body {
-    background-image: url('../img/UNDACimg.jpg');
+    background-color: rgb(0, 0, 0,.6);
+    /*background-image: url('../img/UNDACimg.jpg');*/
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
+#video-background {
+    min-height: 100%;
+    position: fixed;
+    min-width: 100%;
 
+    top: 50%;
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-50%);
+
+    z-index: -1;
+
+}
 .iconoSalir {
     font-size: 25px;
     border-radius: 15px;

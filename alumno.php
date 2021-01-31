@@ -106,7 +106,7 @@
                     <li><a href="#" style="padding:25px;"><span><i class="bi bi-cash"></i></span> Pagos en linea</a></li>
                     <li><a href="#" style="padding:25px;"><span><i class="bi bi-laptop"></i></span> Aula Virtual</a></li>
                     <!-- <li><a href="##"><span class="glyphicon glyphicon-envelope"></span> Notificaciones</a></li> -->
-                    <li><a href="home.html" target="_blank" style="padding:25px;"><span class=""><i class="bi bi-check2-all"></i></span> Sufragio</a></li>
+                    <li><a href="home.php" target="_blank" style="padding:25px;"><span class=""><i class="bi bi-check2-all"></i></span> Sufragio</a></li>
                     <li><a href="indexLogin.html" style="padding:25px;"><span class=""><i class="bi bi-box-arrow-right"></i></span> Cerrar Sesión</a></li>
                 </ul>
             </div>

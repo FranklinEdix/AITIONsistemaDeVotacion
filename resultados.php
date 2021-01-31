@@ -31,7 +31,7 @@
                 <div class="col-md-5">
                     <!-- Logo -->
                     <div class="logo">
-                        <h1><a href="home.html">AITÍON</a></h1>
+                        <h1><a href="home.php">AITÍON</a></h1>
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -61,17 +61,37 @@
                 <div class="sidebar content-box" style="display: block;">
                     <ul class="nav">
                         <!-- Main menu --> 
-                        <li><a href="indexRector.php"><i class="glyphicon glyphicon-info-sign"></i>Información Candidatos</a></li>
+                        <li><a <?php 
+                                date_default_timezone_set('America/Lima');
+                                $fecha = date('Y-m-d');
+                                $queryFecha = "SELECT MAX(PeriodoFin) FROM listarector"; 
+                                $resultadoFecha = mysqli_query($conexion ,$queryFecha); 
+                                $rowFecha = mysqli_fetch_row($resultadoFecha); 
+                                if($rowFecha[0] > $fecha){ ?>
+                                    href="indexRector.php"<?php
+                                }else{
+                                    ?> href="indexRectorMensaje.php" 
+                                <?php } ?>><i class="glyphicon glyphicon-info-sign"></i>Información Candidatos</a></li>
                         <li><a <?php
                                 ob_start(); 
                                 $usuario = $_SESSION['usuario']; 
+                                date_default_timezone_set('America/Lima');
+                                $fecha = date('Y-m-d');
+                                $queryFecha = "SELECT MAX(PeriodoFin) FROM listarector"; 
+                                $resultadoFecha = mysqli_query($conexion ,$queryFecha); 
+                                $rowFecha = mysqli_fetch_row($resultadoFecha);
                                 $queryListaElectores = "SELECT COUNT(*) FROM listaelectores WHERE IdUsuario = '$usuario'"; 
                                 $resultadoListaElectores = mysqli_query($conexion ,$queryListaElectores); 
                                 $rowListaElectores = mysqli_fetch_row($resultadoListaElectores); 
-                                if($rowListaElectores[0] == 0){ ?>
-                                    href="indexVotar.php"<?php
+                                if ($rowFecha[0] > $fecha) {
+                                        if ($rowListaElectores[0] == 0) { ?>
+                                            href="indexVotar.php"<?php
+                                        } else {
+                                        ?> type="button" data-bs-toggle="modal" data-bs-target="#ModalVotación" 
+                                        <?php
+                                        }
                                 }else{
-                                    ?> type="button" data-bs-toggle="modal" data-bs-target="#ModalVotación" 
+                                    ?> href="indexVotacionMensaje.php" 
                                 <?php } ?>><i class="glyphicon glyphicon-ok"></i> Realizar Votación</a></li>
                                 <!-- Modal -->
                                         <div class="modal fade" id="ModalVotación" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -90,7 +110,36 @@
                                                 </div>
                                             </div>
                                         </div>
-                        <li class="current"><a href="resultados.php"><i class="glyphicon glyphicon-signal"></i> Resultados</a></li>
+                                <!-------------->        
+                        <li class="current"><a <?php 
+                                date_default_timezone_set('America/Lima');
+                                $fecha = date('Y-m-d');
+                                $queryFecha = "SELECT MAX(PeriodoFin) FROM listarector"; 
+                                $resultadoFecha = mysqli_query($conexion ,$queryFecha); 
+                                $rowFecha = mysqli_fetch_row($resultadoFecha); 
+                                if($rowFecha[0] < $fecha){ ?>
+                                    href="resultados.php"<?php
+                                }else{
+                                    ?> type="button" data-bs-toggle="modal" data-bs-target="#ModalResultado" 
+                                <?php } ?>><i class="glyphicon glyphicon-signal"></i> Resultados</a></li>
+                                <!-- Modal -->
+                                <div class="modal fade" id="ModaResultado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h3>Aún no termina el periodo de elecciones</h3>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <!-------------->  
                         <!--<li><a href="tables.html"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
                         <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
                         <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
@@ -100,7 +149,7 @@
                                 <i class="glyphicon glyphicon-list"></i> Pages
                                 <span class="caret pull-right"></span>
                             </a>
-                            <!-- Sub menu 
+                             Sub menu 
                             <ul>
                                 <li><a href="login.html">Login</a></li>
                                 <li><a href="signup.html">Signup</a></li>
@@ -110,153 +159,24 @@
                 </div>
             </div>
             <div class="col-md-10">
-
-                <!--<div class="content-box-large">
-                    <div class="panel-heading">
-                        <div class="panel-title">Morris.js Stacked</div>
-
-                        <div class="panel-options">
-                            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                <div class="card-body">
+                    <div class="row" style="display: flex;">
+                        <div class="col-lg-4">
+                            <button style="margin-top: 5px;" class="btn btn-success" onclick="CargarDatosGraficoBar('myChart','bar','Listas')">Grafico Barra</button>
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <div id="hero-area" style="height: 230px;"></div>
-                    </div>
-                </div>
-
-                <div class="content-box-large">
-                    <div class="panel-heading">
-                        <div class="panel-title">Morris.js Monthly growth</div>
-
-                        <div class="panel-options">
-                            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                        <div class="col-lg-4">
+                            <button style="margin-top: 5px;" class="btn btn-success" onclick="CargarDatosGraficoBar('myChart3','doughnut','Listas')">Grafico Dona</button>
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <div id="hero-graph" style="height: 230px;"></div>
-                    </div>
-                </div>-->
-
-                <div class="content-box-large">
-                    <div class="panel-heading">
-                        <div class="panel-title">Resultados de la votación</div>
-
-                        <div class="panel-options">
-                            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                        <div class="col-md-10">
+                        <br>
+                            <h2 id="ganador" style="Color: white; padding:10px; border-radius:15px;"></h2>
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div id="hero-bar" style="height: 230px;"></div>
-                            </div>
-                            <div class="col-md-3">
-                                <div id="hero-donut" style="height: 230px;"></div>
-                            </div>
-                            <div class="col-md-3">
-                                <div id="hero-donut2" style="height: 230px;"></div>
-                            </div>
+                        <div class="col-lg-6">
+                        <canvas id="myChart"  width="505" height="505" style="margin-top: 20px;"></canvas>
+                        <canvas id="myChart3" width="505" height="505" style="margin-top: 20px;"></canvas>
                         </div>
                     </div>
                 </div>
-
-                <div class="content-box-large">
-                    <div class="panel-heading">
-                        <div class="panel-title">jQuery Knob</div>
-
-                        <div class="panel-options">
-                            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <input type="text" value="50" class="knob second" data-thickness=".3" data-inputColor="#333" data-fgColor="#30a1ec" data-bgColor="#d4ecfd" data-width="150">
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" value="75" class="knob second" data-thickness=".3" data-inputColor="#333" data-fgColor="#8ac368" data-bgColor="#c4e9aa" data-width="150">
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" value="35" class="knob second" data-thickness=".3" data-inputColor="#333" data-fgColor="#5ba0a3" data-bgColor="#cef3f5" data-width="150">
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" value="85" class="knob second" data-thickness=".3" data-inputColor="#333" data-fgColor="#b85e80" data-bgColor="#f8d2e0" data-width="150">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--<div class="row">
-                    <div class="col-md-6">
-                        <div class="content-box-large">
-                            <div class="panel-heading">
-                                <div class="panel-title">Pie Chart</div>
-
-                                <div class="panel-options">
-                                    <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                                    <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div id="piechart1" style="width:100%;height:200px"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="content-box-large">
-                            <div class="panel-heading">
-                                <div class="panel-title">Pie Chart</div>
-
-                                <div class="panel-options">
-                                    <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                                    <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div id="piechart2" style="width:100%;height:200px"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="content-box-large">
-                            <div class="panel-heading">
-                                <div class="panel-title">Bar Chart</div>
-
-                                <div class="panel-options">
-                                    <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                                    <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div id="catchart" style="width:100%;height:300px"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="content-box-large">
-                            <div class="panel-heading">
-                                <div class="panel-title">Multiple axes</div>
-
-                                <div class="panel-options">
-                                    <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                                    <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div id="timechart" style="width:100%;height:300px"></div>
-                            </div>
-                        </div>
-                    </div>-->
-                </div>
-
-
             </div>
         </div>
     </div>
@@ -264,8 +184,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js" ></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
     <!-- jQuery UI -->
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -290,3 +213,121 @@
 </body>
 
 </html>
+
+<script>
+        function CargarDatosGraficoBar(id,tipo,encabezado)
+        {
+            var titulo=[];
+            var cantidad=[];
+            $.ajax({
+            url:'controlador_grafico.php',
+            type:'POST'
+            }).done(function(resp){
+                if(resp.length>0)
+                {
+                var info=JSON.parse(resp);
+                for(var i= 0;i<info.length;i++)
+                {
+                    titulo.push(info[i][0]);
+                    cantidad.push(info[i][1]);
+                }
+                //llamar función
+                if(info.length== 1){
+                    document.getElementById("ganador").innerHTML="El ganador de la presente elección, es el partido: <strong>";
+                }else{
+                    if(info[0][1] == info[1][1]){
+                    document.getElementById("ganador").innerHTML="Hay empate de partidos espera segunda vuelta ";
+                
+                    }else{
+                        document.getElementById("ganador").innerHTML="El ganador de la presente elección, es el partido: <strong>" + info[0][0] + "</strong>";
+                    }
+                }
+                if(id=="myChart3")
+                {
+                    crear_dona_grafico(id,tipo,encabezado,titulo,cantidad);
+                    document.getElementById(id).style.display = "block";
+                    document.getElementById("myChart").style.display = "none";
+                }
+                else
+                {
+                    crear_grafico(id,tipo,encabezado,titulo,cantidad);
+                    document.getElementById(id).style.display = "block";
+                    document.getElementById("myChart3").style.display = "none";
+                }
+
+                //
+                }
+            }); 
+            
+        }
+        function crear_grafico(id,tipo,encabezado,titulo,cantidad)
+        {
+            var ctx = document.getElementById(id);
+            document.getElementById(id).style.backgroundColor = "rgb(255,255,255,.6)";
+            document.getElementById("ganador").style.backgroundColor = "rgb(0,0,0,.6)";
+            var myChart = new Chart(ctx, {
+            type: tipo,
+            data: {
+                labels: titulo,
+                datasets: [{
+                    label: encabezado,
+                    data: cantidad,
+                    backgroundColor: color(cantidad.length,1),
+                    borderColor: color(cantidad.length,1),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        }
+
+      function crear_dona_grafico(id,tipo,encabezado,titulo,cantidad)
+        {   
+            document.getElementById(id).style.backgroundColor = "rgb(255,255,255,.6)";
+            var data = {
+                        labels: titulo,
+                        datasets: [
+                            {
+                                data: cantidad,
+                                backgroundColor: color(cantidad.length,1),
+                                
+                            }]
+                    };
+ 
+            var ctx = document.getElementById(id);
+            var myChart = new Chart(ctx, {
+            type: tipo,
+            data: data,
+           
+            options: {   
+                
+            }
+        });
+        }
+        //-------------------------------------------------------------------------------------
+        function color(cant,difusion)
+        {
+            var exa=[];
+            var R=3;
+            var G=0;
+            var B=1;
+            var auxR=Math.trunc(236/cant);
+            var auxB=Math.trunc(49/cant);
+            for(var i=0;i<cant;i++)
+            {   exa.push('rgba('+R+','+G+','+B+','+difusion+')');
+                var R=R+auxR;
+                var B=B+auxB;
+                
+            }
+            return exa;
+        }
+
+    </script>

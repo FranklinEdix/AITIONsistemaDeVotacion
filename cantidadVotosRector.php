@@ -10,12 +10,16 @@
         $rowListaElectores = mysqli_fetch_row($resultadoListaElectores);
         if($rowListaElectores[0] == 0){
             $id = $_GET['id'];
-            $queryP = "UPDATE listarector SET CantidadVotos = CantidadVotos+1  WHERE IdLista = '$id'";
+            $valorVotos = 1;
+            if ($_SESSION['rol'] == 'REM=;--;DC') {
+                $valorVotos = 6;
+            }
+            $queryP = "UPDATE listarector SET CantidadVotos = CantidadVotos + '$valorVotos'  WHERE IdLista = '$id'";
             $resultadoP = mysqli_query($conexion, $queryP);
             if ($resultadoP) {
                 echo '<h4>Gracias por votar</h4>';
                 ob_start();
-                if ($_SESSION['rol'] == 'QUw=;--;') {
+                //Estudiante          
                     $queryLista = "SELECT*FROM listarector WHERE IdLista = '$id'";
                     $resultadoLista = mysqli_query($conexion, $queryLista);
                     $rowLista = mysqli_fetch_row($resultadoLista);
@@ -25,30 +29,7 @@
                     $fecha = date('Y/m/d');
                     $queryElectores = "INSERT INTO listaelectores(IdListaRector, IdUsuario, IdPartido, FechaSufragio) 
                 VALUES('$lista', '$usuario', '$partido', '$fecha')";
-                    $resultadoElectores = mysqli_query($conexion, $queryElectores);
-                }if ($_SESSION['rol'] == 'REM=;--;DC') {
-                    $queryLista = "SELECT*FROM listarector WHERE IdLista = '$id'";
-                    $resultadoLista = mysqli_query($conexion, $queryLista);
-                    $rowLista = mysqli_fetch_row($resultadoLista);
-                    $lista = $rowLista[0];
-                    $partido = $rowLista[1];
-                    date_default_timezone_set('America/Lima');
-                    $fecha = date('Y/m/d');
-                    $queryElectores = "INSERT INTO listaelectores(IdListaRector, IdUsuario, IdPartido, FechaSufragio) 
-                VALUES('$lista', '$usuario', '$partido', '$fecha')";
-                    $resultadoElectores = mysqli_query($conexion, $queryElectores);
-                }if ($_SESSION['rol'] == 'RUc=;--;') {
-                    $queryLista = "SELECT*FROM listarector WHERE IdLista = '$id'";
-                    $resultadoLista = mysqli_query($conexion, $queryLista);
-                    $rowLista = mysqli_fetch_row($resultadoLista);
-                    $lista = $rowLista[0];
-                    $partido = $rowLista[1];
-                    date_default_timezone_set('America/Lima');
-                    $fecha = date('Y/m/d');
-                    $queryElectores = "INSERT INTO listaelectores(IdListaRector, IdUsuario, IdPartido, FechaSufragio) 
-                VALUES('$lista', '$usuario', '$partido', '$fecha')";
-                    $resultadoElectores = mysqli_query($conexion, $queryElectores);
-                }
+                   $resultadoElectores = mysqli_query($conexion, $queryElectores);  
             }
         }else{
             echo '<h4>Usted ya realizo la votación</h4>';

@@ -59,9 +59,47 @@
                 <div class="sidebar content-box" style="display:block;">
                     <ul class="nav">
                         <!-- Main menu -->
-                        <li><a href="indexRector.php"><i class="glyphicon glyphicon-info-sign"></i>Información Candidatos</a></li>
+                        <li><a <?php 
+                                date_default_timezone_set('America/Lima');
+                                $fecha = date('Y-m-d');
+                                $queryFecha = "SELECT MAX(PeriodoFin) FROM listarector"; 
+                                $resultadoFecha = mysqli_query($conexion ,$queryFecha); 
+                                $rowFecha = mysqli_fetch_row($resultadoFecha); 
+                                if($rowFecha[0] >= $fecha){ ?>
+                                    href="indexRector.php"<?php
+                                }else{
+                                    ?> href="indexRectorMensaje.php" 
+                                <?php } ?>><i class="glyphicon glyphicon-info-sign"></i>Información Candidatos</a></li>
                         <li class="current"><a href="indexVotar.php"><i class="glyphicon glyphicon-ok"></i> Realizar Votación</a></li>
-                        <li><a href="resultados.php"><i class="glyphicon glyphicon-signal"></i> Resultados</a></li>
+                        <li><a <?php 
+                                date_default_timezone_set('America/Lima');
+                                $fecha = date('Y-m-d');
+                                $queryFecha = "SELECT MAX(PeriodoFin) FROM listarector"; 
+                                $resultadoFecha = mysqli_query($conexion ,$queryFecha); 
+                                $rowFecha = mysqli_fetch_row($resultadoFecha); 
+                                if($rowFecha[0] < $fecha){ ?>
+                                    href="resultados.php"<?php
+                                }else{
+                                    ?> type="button" data-bs-toggle="modal" data-bs-target="#ModaResultado" 
+                                <?php } ?>><i class="glyphicon glyphicon-signal"></i> Resultados</a></li>
+                                <!-- Modal -->
+                                <div class="modal fade" id="ModaResultado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h3>Aún no termina el periodo de elecciones</h3>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <!--------------> 
                         <!--<li><a href="tables.html"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
                         <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
                         <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
@@ -71,7 +109,7 @@
                                 <i class="glyphicon glyphicon-list"></i> Pages
                                 <span class="caret pull-right"></span>
                             </a>
-                            <!-- Sub menu 
+                             Sub menu 
                             <ul>
                                 <li><a href="login.html">Login</a></li>
                                 <li><a href="signup.html">Signup</a></li>
