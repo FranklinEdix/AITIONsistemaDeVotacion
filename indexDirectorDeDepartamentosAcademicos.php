@@ -57,7 +57,7 @@
     
     <div class="page-content" >
         <center>
-            <h1 style="color: white; background: rgb(0,0,0,.6); border-radius:15px; padding:10px; margin-top:10px;"><img src="img/undac.png" alt="" width="80" height="80"> Departamentos Academicos <img src="img/undac.png" alt="" width="80" height="80"></h1>
+            <h1 style="color: white; background: rgb(0,0,0,.6); border-radius:15px; padding:10px; margin-top:10px;"><img src="img/undac_white.png" alt="" width="80" height="80"> Departamentos Academicos <img src="img/undac_white.png" alt="" width="80" height="80"></h1>
         </center>
         <div class="row">
             <div class="col-md-2">

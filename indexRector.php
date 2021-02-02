@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- styles -->
     <link href="css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos2.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
@@ -44,7 +44,7 @@
                 <div class="col-md-5">
                     <!-- Logo -->
                     <div class="logo">
-                        <h1><a href="home.php" class="salir"><img src="logo/blancotransparente.png" alt="" width="45" height="45" style="margin: -5px auto auto auto;">AITÍON</a></h1>
+                        <h1><a href="home.php" class="salir"><img src="logo/blancotransparente.png" alt="" width="45" height="40" style="margin: -5px auto auto auto;">AITÍON</a></h1>
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -70,7 +70,7 @@
 
     <div class="page-content" >
         <center>
-            <h1 style="color: white; background: rgb(0,0,0,.6); border-radius:15px; padding:10px; margin-top:10px;"><img src="img/undac.png" alt="" width="80" height="80"> Rector y Vicerrectores <img src="img/undac.png" alt="" width="80" height="80"></h1>
+            <h1 style="color: white; background: rgb(0,0,0,.6); border-radius:15px; padding:10px; margin-top:10px;"><img src="img/undac_white.png" alt="" width="80" height="80"> Rector y Vicerrectores <img src="img/undac_white.png" alt="" width="80" height="80"></h1>
         </center>
         <div class="row">
             <div class="col-md-2">

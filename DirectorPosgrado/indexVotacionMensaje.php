@@ -1,63 +1,11 @@
-<?php include("db.php");?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>AITÍON</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- jQuery UI -->
-    <link href="https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css" rel="stylesheet" media="screen">
-    <link rel="shortcut icon" href="../logo/icono.ico" type="image/x-icon">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <!-- styles -->
-    <link href="../css/styles.css" rel="stylesheet">
-
-    <link href="../css/stats.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/estilos.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-
-
-<div class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <!-- Logo -->
-                    <div class="logo">
-                        <h1><a href="../home.php">AITÍON</a></h1>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <!--<div class="input-group form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-	                         <button class="btn btn-primary" type="button">Search</button>
-	                       </span>
-                            </div>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="logo">
-                        <h1><a href="indexLogin.html" class="logo">SALIR</a></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-content" >
+<?php 
+    include("db.php");
+    include("../header.php");
+?>
+    <div class="page-content">
+    <center>
+        <h1 style="color: white; background: rgb(0,0,0,.6); border-radius:15px; padding:10px; margin-top:10px;"><img src="../img/undac_white.png" alt="" width="80" height="80"> Consejo De Facultad <img src="../img/undac_white.png" alt="" width="80" height="80"></h1>
+    </center>
         <div class="row">
             <div class="col-md-2">
                 <div class="sidebar content-box" style="display:block;">

@@ -29,7 +29,7 @@
     </nav>
     <div style="margin:-30px 30px; display: block; float:right;">
         <h1>
-            <a href="indexLogin.html" class=""><button type="button" class="btn btn-danger" style="font-size: 25px;"><i class="glyphicon glyphicon-log-out" style="color: aliceblue;"></i></button></a>
+            <a href="indexLogin.html" class=""><button type="button" class="btn btn" style="font-size: 25px; background:rgb(220,20,60,.3); border-radius: 10px;"><i class="glyphicon glyphicon-log-out" style="color: aliceblue;"></i></button></a>
         </h1>
     </div>
     <div style="display: flex;">
@@ -116,7 +116,20 @@
                                 }?>
                                 <?php  
                                 if($_SESSION['rol'] == 'RUc=;--;'){ ?>
-                                    <li><a href="DirectorPosgrado/indexDirectorPosgrado.php" style="font-size: 25px;"><i class="glyphicon glyphicon-hand-right"></i> Director de Posgrado </a></li><?php
+                                    <li><a
+                                    <?php 
+                                date_default_timezone_set('America/Lima');
+                                $fecha = date('Y-m-d');
+                                $queryFecha = "SELECT MAX(PeriodoFin) FROM listacandidatos WHERE IdTipoElecciones = '$tipoDirectorPostgrado'"; 
+                                $resultadoFecha = mysqli_query($conexion ,$queryFecha); 
+                                $rowFecha = mysqli_fetch_row($resultadoFecha); 
+                                if($rowFecha[0] >= $fecha){ ?>
+                                style="font-size: 25px; background:rgb(255,255,255,.3); border-radius: 10px;"
+                                    href="DirectorDepartamentosAcademicos/indexDirectorDepartamento.php"<?php
+                                }else{
+                                    ?> href="DirectorDepartamentosAcademicos/indexDirectorDepartamentoMensaje.php"
+                                    style="font-size: 25px; background:rgb(220,20,60,.3); border-radius: 10px;" 
+                                <?php } ?> href="DirectorPosgrado/indexDirectorPosgrado.php" style="font-size: 25px;"><i class="glyphicon glyphicon-hand-right"></i> Director de Posgrado </a></li><?php
                                 }?>
                         </ul>
                     </div>

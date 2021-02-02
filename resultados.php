@@ -46,7 +46,7 @@
                 <div class="col-md-5">
                     <!-- Logo -->
                     <div class="logo">
-                        <h1><a href="home.php" class="salir"><img src="logo/blancotransparente.png" alt="" width="45" height="45" style="margin: -5px auto auto auto;">AITÍON</a></h1>
+                        <h1><a href="home.php" class="salir"><img src="logo/blancotransparente.png" alt="" width="45" height="40" style="margin: -5px auto auto auto;">AITÍON</a></h1>
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -71,6 +71,9 @@
     </div>
 
     <div class="page-content">
+    <center>
+        <h1 style="color: white; background: rgb(0,0,0,.6); border-radius:15px; padding:10px; margin-top:10px;"><img src="img/undac_white.png" alt="" width="80" height="80"> Rector y Vicerrectores <img src="img/undac_white.png" alt="" width="80" height="80"></h1>
+    </center>
         <div class="row">
             <div class="col-md-2">
                 <div class="sidebar content-box" style="display: block;">
@@ -177,10 +180,10 @@
                 <div class="card-body">
                     <div class="row" style="display: flex;">
                         <div class="col-lg-4">
-                            <button style="margin-top: 5px;" class="btn btn-success" onclick="CargarDatosGraficoBar('myChart','bar','Listas')">Grafico Barra</button>
+                            <button style="margin-top: 5px; background:#000; border:2px solid #fff;" class="btn btn-success" onclick="CargarDatosGraficoBar('myChart','bar','Listas')">Grafico Barra</button>
                         </div>
                         <div class="col-lg-4">
-                            <button style="margin-top: 5px;" class="btn btn-success" onclick="CargarDatosGraficoBar('myChart3','doughnut','Listas')">Grafico Dona</button>
+                            <button style="margin-top: 5px; background:#000; border:2px solid #fff;" class="btn btn-success" onclick="CargarDatosGraficoBar('myChart3','doughnut','Listas')">Grafico Dona</button>
                         </div>
                         <div class="col-md-10">
                         <br>

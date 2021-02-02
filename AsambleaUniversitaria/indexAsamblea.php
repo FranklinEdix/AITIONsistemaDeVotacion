@@ -19,12 +19,26 @@ include("../Variables.php");
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
+    <!-- iconos de bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .salir{
+            text-decoration: none; 
+            padding:6px;
+            border-radius: 10px;
+            transition: 500ms;
+        }
+        .salir:hover{
+            background-color: #000;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,7 +48,7 @@ include("../Variables.php");
                 <div class="col-md-4">
                     <!-- Logo -->
                     <div class="logo">
-                        <h1><a href="../home.php">AITÍON</a></h1>
+                    <h1><a href="home.php" class="salir"><img src="logo/blancotransparente.png" alt="" width="45" height="40" style="margin: -5px auto auto auto;">AITÍON</a></h1>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -52,7 +66,7 @@ include("../Variables.php");
                 </div>
                 <div class="col-md-2">
                     <div class="logo">
-                        <h1><a href="../indexLogin.html">SALIR</a></h1>
+                    <h1><a href="indexLogin.html" class="salir">SALIR <i class="bi bi-box-arrow-right"></i></a></h1>
                     </div>
                 </div>
             </div>
@@ -61,7 +75,7 @@ include("../Variables.php");
     
     <div class="page-content" >
     <center>
-            <h1 style="color: white; background: rgb(0,0,0,.6); border-radius:15px; padding:10px; margin-top:10px;"><img src="../img/undac.png" alt="" width="80" height="80"> Asamblea Universitaria <img src="../img/undac.png" alt="" width="80" height="80"></h1>
+            <h1 style="color: white; background: rgb(0,0,0,.6); border-radius:15px; padding:10px; margin-top:10px;"><img src="../img/undac_white.png" alt="" width="80" height="80"> Asamblea Universitaria <img src="../img/undac_white.png" alt="" width="80" height="80"></h1>
         </center>
         <div class="row">
             <div class="col-md-2">
