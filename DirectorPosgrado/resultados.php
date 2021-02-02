@@ -15,6 +15,7 @@
     <title>AITÍON</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- jQuery UI -->
+    <link rel="shortcut icon" href="../logo/icono.ico" type="image/x-icon">
     <link href="https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="../vendors/morris/morris.css">
     <!-- Bootstrap -->

@@ -27,3 +27,12 @@ body {
 .iconoSalir:hover {
     padding: 12px;
 }
+a.salir{
+    transition: 500ms;
+}
+
+a.salir:hover{
+    background:#000; 
+    padding:3px; 
+    border-radius:5px;
+}

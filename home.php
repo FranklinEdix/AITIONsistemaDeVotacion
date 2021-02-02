@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AITÍON</title>
+    <link rel="shortcut icon" href="logo/icono.ico" type="image/x-icon">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="css/styles.css" rel="stylesheet">
@@ -32,7 +33,7 @@
         </h1>
     </div>
     <div style="display: flex;">
-        <div class="page-content" style="margin: 50px 30px 0 30px; ">
+        <div class="page-content" style="margin: 50px 30px 0 70px; ">
             <div class="row">
                 <div class="col-md-12" >
                     <div class="sidebar content-box" style="display: block; background: rgb(0,0,0,.7);">
@@ -123,7 +124,7 @@
             </div>
         </div>
         <div>
-            <img src="img/Estudiante.png" alt="" width="450" height="500" style="margin: auto auto auto 50px;">
+            <img src="logo/blancotransparente.png" alt="" width="510" height="510" style="margin: auto auto auto 110px;">
         </div>
     </div>
     </div>

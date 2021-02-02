@@ -7,7 +7,7 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		 <![endif]-->
     <!-- Mobile Specific Metas -->
-    <title>e-UNDAC - Sistema Academico UNDAC 2.0</title>
+    <title>Sistema Academico UNDAC</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link href="https://fonts.googleapis.com/css?family=Cuprum:400italic,400,700italic,700" rel="stylesheet" type="text/css">
@@ -26,6 +26,7 @@
     <script type="text/javascript" src="/external_library/jquery-ui/jquery.ui.datepicker.js"></script>
     <script type="text/javascript" src="/external_library/jquery-ui/jquery.ui.core.js"></script>
     <script src='/js/vendor/socket.io-1.3.5.js'></script>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 
 <body style="background-image: url('/img/fondo.png');background-size: cover;background-repeat: no-repeat; background-attachment: fixed;background-position: center;">

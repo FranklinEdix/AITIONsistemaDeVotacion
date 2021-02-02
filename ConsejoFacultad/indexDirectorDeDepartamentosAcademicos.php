@@ -11,7 +11,7 @@
     <!-- styles -->
     <link href="css/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="css/estilos.css">
-
+    <link rel="shortcut icon" href="../logo/icono.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
